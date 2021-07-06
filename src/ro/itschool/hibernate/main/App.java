@@ -2,6 +2,7 @@ package ro.itschool.hibernate.main;
 
 import java.time.LocalDate;
 
+import lombok.extern.java.Log;
 import ro.itschool.hibernate.entity.Customer;
 import ro.itschool.hibernate.entity.Employee;
 import ro.itschool.hibernate.entity.Product;
@@ -10,6 +11,7 @@ import ro.itschool.hibernate.service.EmployeeService;
 import ro.itschool.hibernate.service.NotEnoughProductsException;
 import ro.itschool.hibernate.service.ProductService;
 
+@Log
 public class App {
 
 	public static void main(String[] args) {
@@ -53,10 +55,10 @@ public class App {
 		customerService.persist(c3);
 
 		try {
-			productService.checkOut(p4.getId(), 4);
+			productService.checkOut(p4.getId(), 47);
 			customerService.buy(c1, p4);
 		} catch (NotEnoughProductsException e) {
-			e.printStackTrace();
+			log.severe("Not enough products");
 		}
 
 	}
