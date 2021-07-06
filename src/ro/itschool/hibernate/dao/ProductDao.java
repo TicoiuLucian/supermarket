@@ -69,12 +69,12 @@ public class ProductDao {
 		}
 	}
 
-	public void checkOut(Product p1, int quantity) throws NotEnoughProductsException {
-		if (findById(p1.getId()).getQuantity() < quantity) {
+	public void checkOut(int productId, int quantity) throws NotEnoughProductsException {
+		Product p = findById(productId);
+		if (p.getQuantity() < quantity) {
 			throw new NotEnoughProductsException("Not enough products of this type");
 		}
-		p1.setQuantity(p1.getQuantity() - quantity);
-		currentSession.clear();
-		update(p1);
+		p.setQuantity(p.getQuantity() - quantity);
+		update(p);
 	}
 }

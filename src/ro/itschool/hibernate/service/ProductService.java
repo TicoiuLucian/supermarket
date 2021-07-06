@@ -51,9 +51,9 @@ public class ProductService {
 		productDao.closeCurrentSessionwithTransaction();
 	}
 
-	public void checkOut(Product p, int quantity) throws NotEnoughProductsException {
+	public void checkOut(int productId, int quantity) throws NotEnoughProductsException {
 		productDao.openCurrentSessionwithTransaction();
-		productDao.checkOut(p, quantity);
+		productDao.checkOut(productId, quantity);
 		productDao.closeCurrentSessionwithTransaction();
 	}
 

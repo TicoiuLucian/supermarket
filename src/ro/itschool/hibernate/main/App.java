@@ -53,7 +53,7 @@ public class App {
 		customerService.persist(c3);
 
 		try {
-			productService.checkOut(p4, 4);
+			productService.checkOut(p4.getId(), 4);
 			customerService.buy(c1, p4);
 		} catch (NotEnoughProductsException e) {
 			e.printStackTrace();
